@@ -6,11 +6,15 @@
 
 基于 [Sutera-Diffusus/dsh-whale-musume](https://github.com/Sutera-Diffusus/dsh-whale-musume) v2.1.0 制作的独立桌面适配，无需安装 DeepSeek Harness，也不需要 API Key。
 
-## 获取源码
+## 下载与启动
 
-本仓库仅提供源码，不提供预编译安装包。可以点击 GitHub 的 **Code → Download ZIP**，或[下载源码 ZIP](https://github.com/BRUENCE-TOWM/whale-musume-desktop/archive/refs/heads/main.zip)。运行步骤见下方“从源码运行”。
+1. 从 [Releases](https://github.com/BRUENCE-TOWM/whale-musume-desktop/releases/latest) 下载 Windows x64 ZIP。
+2. 完整解压到可写文件夹，双击 `Start-Whale.cmd`；也可运行 `program/WhaleDesktop.exe`。
+3. 把自己的歌曲放到 `Start-Whale.cmd` 同一文件夹，右键桌宠 → **音乐与桌面设置** → **刷新歌曲**。
 
-把自己的歌曲放到源码根目录，右键桌宠 → **音乐与桌面设置** → **刷新歌曲**。仓库不包含个人歌曲、养成记录或缓存，没有设置开机自启。目标平台为 Windows x64，也可以按下方命令自行打包。
+发布包不包含歌曲。不要只移动 exe，需保留 `program` 文件夹。当前提供 Windows x64 便携版，没有安装器或开机自启。
+
+也可以[下载源码 ZIP](https://github.com/BRUENCE-TOWM/whale-musume-desktop/archive/refs/heads/main.zip)，按下方“从源码运行”自行构建。
 
 ## 音乐操作
 
