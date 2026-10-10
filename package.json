@@ -1,0 +1,21 @@
+{
+  "name": "whale-musume-desktop",
+  "version": "1.1.1",
+  "private": true,
+  "description": "鲸鱼娘独立桌面版：点击播放暂停，单曲播放一次",
+  "main": "main.cjs",
+  "scripts": {
+    "build": "node build.cjs",
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "test:upstream": "node --test vendor/dsh-whale-musume/test/*test.mjs",
+    "test:smoke": "node test/smoke.cjs",
+    "package": "node package.cjs"
+  },
+  "license": "MIT",
+  "author": "BRUENCE-TOWM",
+  "engines": { "node": ">=22.12.0" },
+  "repository": { "type": "git", "url": "https://github.com/BRUENCE-TOWM/whale-musume-desktop.git" },
+  "dependencies": { "react": "19.3.0", "react-dom": "19.3.0" },
+  "devDependencies": { "electron": "44.4.5", "esbuild": "0.25.12", "playwright": "1.58.2" }
+}

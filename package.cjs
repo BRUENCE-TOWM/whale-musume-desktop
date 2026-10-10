@@ -1,0 +1,17 @@
+const fs=require('node:fs'),path=require('node:path');
+if(process.platform!=='win32'||process.arch!=='x64')throw new Error('Package on Windows x64.');
+const electronExe=require('electron');
+const pkg=require('./package.json');
+const output=path.join(__dirname,'dist',`whale-musume-desktop-${pkg.version}-win32-x64`);
+const runtime=path.join(output,'program');
+for(const file of ['public/desktop.js','public/upstream-client.js','upstream/assets/dsh-whale-moe.js'])if(!fs.existsSync(path.join(__dirname,file)))throw new Error('Run npm run build first: '+file);
+fs.mkdirSync(runtime,{recursive:true});
+fs.cpSync(path.dirname(electronExe),runtime,{recursive:true});
+fs.renameSync(path.join(runtime,'electron.exe'),path.join(runtime,'WhaleDesktop.exe'));
+const app=path.join(runtime,'resources/app');fs.mkdirSync(app,{recursive:true});
+for(const file of ['main.cjs','preload.cjs','public','upstream'])fs.cpSync(path.join(__dirname,file),path.join(app,file),{recursive:true});
+fs.writeFileSync(path.join(app,'package.json'),JSON.stringify({name:pkg.name,version:pkg.version,main:pkg.main,license:pkg.license},null,2));
+for(const file of ['README.md','LICENSE','NOTICE.md'])fs.copyFileSync(path.join(__dirname,file),path.join(output,file));
+fs.writeFileSync(path.join(output,'Start-Whale.cmd'),'@echo off\r\nstart "" "%~dp0program\\WhaleDesktop.exe"\r\n');
+fs.writeFileSync(path.join(output,'MUSIC.txt'),'Place your own music files beside Start-Whale.cmd. Click the pet to play/pause/resume. One playback per song; no loop.\r\n');
+console.log(output);
